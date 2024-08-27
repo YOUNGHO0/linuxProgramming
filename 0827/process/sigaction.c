@@ -25,10 +25,7 @@ int main(){
     struct sigaction sigact, oldsigact;
     // handLer설정 먜크로로 function pointer로써 defined 되어있다.
     sigact.sa_handler = handler;
-    // sigact sa_mask가 있는데 해당 마스크 비트가 1이면
-    // 처리중에 해당 신호가 왔을 때 블로킹한다.
-    // 해당 마스크 비트가 0이라면 어떤 시그널을 처리하다가도
-    // 마스크 비트가 0인 시그널도 동시에 처리될 수 있다는 이야기 이다
+    //특정 시그널이 처리되는 동안 마스킹 되어있는 시그널들을 블록한다.
     sigfillset(&sigact.sa_mask);
     // , read()나 write()와 같은 시스템 호출이 시그널에 의해 중단되었을 때
     // 이 플래그가 설정되면 시스템 호출이 자동으로 재시작됩니다.
